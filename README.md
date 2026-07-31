@@ -1,206 +1,125 @@
-# 🎓 ScholarAI - AI Powered Learning Assistant
+# 🎓 ScholarAI – AI Powered Study Assistant
 
-ScholarAI is an AI-powered learning assistant that helps students understand their study materials faster. It allows users to upload PDF notes, ask questions, generate summaries, and create quizzes using Artificial Intelligence.
+ScholarAI is a beginner-friendly AI-based educational web application developed to help students study their notes more efficiently.
 
-The project uses **Retrieval-Augmented Generation (RAG)** to provide answers based on the user's uploaded study material instead of generating unrelated responses.
+The application allows students to upload PDF study material and interact with it using AI. It can extract text from notes, create summaries, generate quizzes, answer questions from the uploaded material, and also accept voice-based questions.
+
+The project was developed as a college project to gain practical experience with Artificial Intelligence, Natural Language Processing, embeddings, vector databases, and Large Language Models.
 
 ---
 
-## 🚀 Problem Statement
+## 📌 Problem Statement
 
-Students often spend a lot of time searching through lengthy PDFs and notes to find important information. Manually reading and revising large study materials can be time-consuming and inefficient.
+Students often have to read through long PDF notes and study materials to find specific information. Preparing summaries and revision questions manually can also take a lot of time.
 
-ScholarAI solves this problem by transforming static study documents into an interactive AI learning companion.
+ScholarAI aims to make this process easier by allowing students to upload their study material and use AI to interact with it.
 
 ---
 
 ## ✨ Features
 
-### 📄 PDF Understanding
-
-* Upload study notes in PDF format
-* Extract and process document content
-* Convert documents into searchable knowledge
-
-### 💬 AI Question Answering
-
-* Ask questions directly from uploaded notes
-* Get context-based answers using RAG
-* Reduces the time needed to search through documents
-
-### 📝 AI Summary Generation
-
-* Generate quick summaries from study materials
-* Helps students with faster revision
-
-### ❓ AI Quiz Generation
-
-* Automatically creates multiple-choice questions
-* Allows students to test their understanding
-
-### 🔍 Semantic Search
-
-* Uses vector embeddings to find relevant information
-* Provides better results than simple keyword matching
+- 📄 Upload PDF study notes
+- 🔍 Extract text from PDF files
+- ✂️ Split extracted text into smaller chunks
+- 🧠 Generate embeddings for document chunks
+- 🗄️ Store and search document embeddings using ChromaDB
+- 💬 Ask questions from uploaded notes
+- 🤖 Generate answers using a local LLM
+- 📝 Generate AI-based summaries
+- ❓ Generate multiple-choice quizzes
+- 🎤 Ask questions using voice input
+- 📚 Retrieve relevant information from uploaded documents
+- 💻 Simple Streamlit-based interface
+- 🔒 Local AI model support using Ollama
 
 ---
 
-## 🧠 How It Works
+## 🛠️ Technologies Used
 
-```
-PDF Upload
-     |
-     ↓
-Text Extraction (PyMuPDF)
-     |
-     ↓
-Text Chunking
-     |
-     ↓
-Sentence Transformer Embeddings
-     |
-     ↓
-FAISS Vector Search
-     |
-     ↓
-Llama 3.2 LLM (Ollama)
-     |
-     ↓
-Answer / Summary / Quiz
-```
+### Frontend / User Interface
 
----
-
-## 🛠️ Tech Stack
+- **Streamlit**
+  - Used to create the web interface.
+  - Provides PDF upload, question answering, summary, quiz and voice interaction features.
 
 ### Programming Language
 
-* Python
+- **Python**
+  - Main programming language used for the project.
 
-### Frontend
+### PDF Processing
 
-* Streamlit
+- **PyMuPDF (fitz)**
+  - Used to extract text from PDF documents.
 
-### AI & Machine Learning
+### Natural Language Processing
 
-* Ollama
-* Llama 3.2
-* Sentence Transformers
+- **NLP**
+  - Used for basic text cleaning and document chunking.
 
-### Database / Search
+### Embeddings
 
-* FAISS Vector Index
+- **Sentence Transformers**
+- **all-MiniLM-L6-v2**
 
-### Document Processing
+These are used to convert text chunks into numerical vector representations.
 
-* PyMuPDF
+### Vector Database
 
-### Libraries
+- **ChromaDB**
 
-* NumPy
-* JSON
-* Pickle
+Used to store document embeddings and retrieve relevant chunks using semantic similarity.
 
----
+### AI / LLM
 
-## 📂 Project Structure
+- **Ollama**
+- **Llama 3.2**
 
-```
-ScholarAI/
-│
-├── app.py
-├── requirements.txt
-├── README.md
-│
-├── modules/
-│   ├── llm.py
-│   ├── pdf_processor.py
-│   ├── vec_store.py
-│   ├── summarizer.py
-│   └── quiz_generator.py
-│
-└── database/
-```
+Ollama is used to run the AI model locally for question answering, summarization and quiz generation.
 
----
+### LangChain
 
-## ⚙️ Installation & Setup
+LangChain is used for:
 
-### 1. Clone the repository
+- Prompt handling
+- Text splitting
+- Document processing
+- Connecting different AI components
 
-```
-git clone <repository-url>
-```
+### Voice Input
 
-### 2. Create virtual environment
+- **SpeechRecognition**
 
-```
-python -m venv .venv
-```
+Used to convert spoken questions into text.
 
-Activate environment:
+### Development Tools
 
-Windows:
-
-```
-.venv\Scripts\activate
-```
+- Visual Studio Code
+- Python Virtual Environment (`venv`)
+- Git / GitHub
 
 ---
 
-### 3. Install dependencies
+## 🧠 How ScholarAI Works
 
-```
-pip install -r requirements.txt
-```
+The basic workflow of ScholarAI is:
 
----
-
-### 4. Install Ollama
-
-Download and install Ollama, then run:
-
-```
-ollama pull llama3.2:3b
-```
-
----
-
-### 5. Run Application
-
-```
-streamlit run app.py
-```
-
----
-
-## 🎯 Challenges Solved
-
-* Building a complete RAG pipeline connecting documents, embeddings, vector search, and LLMs
-* Handling PDF extraction and document processing
-* Managing FAISS vector storage and similarity search
-* Creating structured AI-generated quizzes
-* Optimizing performance for local LLM execution
-
----
-
-## 🔮 Future Improvements
-
-* OCR support for scanned handwritten notes
-* Voice-based AI learning assistant
-* Multi-document support
-* User accounts and learning progress tracking
-* Flashcard generation
-* Cloud deployment
-
----
-
-## 🌟 Impact
-
-ScholarAI makes learning more efficient by helping students quickly understand, revise, and interact with their study materials through AI.
-
----
-
-## 👩‍💻 Built With
-
-Built as part of **CodeStorm 2026 - FutureForge Hackathon**.
+            Upload PDF
+                ↓
+        PDF Text Extraction
+                ↓
+          Text Cleaning
+                ↓
+          Text Chunking
+                ↓
+       Generate Embeddings
+                ↓
+            ChromaDB
+                ↓
+       Semantic Search / Retrieval
+                ↓
+       Relevant Note Chunks
+                ↓
+          Ollama LLM
+                ↓
+          AI Generated Answer
